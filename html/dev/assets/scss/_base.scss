@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+@import "compass";
+@import "setting";
+@import "mixin";
+
+
+// 変数宣言
+
+
+// webフォントの読み込み
+$fontPath : "../resources/font/";
+
+// Noto Sans
+$notoSansPath 	: $fontPath + "NotoSansCJKjp/";
+$notoSansLight 	: $notoSansPath + "NotoSansCJKjp-Light";
+$notoSansMedium : $notoSansPath + "NotoSansCJKjp-Medium";
+$notoSansBold 	: $notoSansPath + "NotoSansCJKjp-Bold";
+
+@mixin webFontSrc($fontName) {
+	// src: url($fontName + '.eot');  /* IE9 Compat Modes */
+	src: local($fontName), /* local */
+		// url($fontName + '.eot?iefix') format('embedded-opentype'), /* eof - IE6-IE8 */
+		url($fontName + '.woff2') format('woff2'),	/* Super Modern Browsers */
+		url($fontName + '.woff') format('woff'),		/* Pretty Modern Browsers */
+		url($fontName + '.ttf') format('truetype');	/* Safari, Android, iOS */
+}
+
+// light
+@font-face {
+	font-family: "Noto Sans Japanese";
+	font-style: normal;
+	font-weight: $notoLight;
+	@include webFontSrc($notoSansLight);
+}
+
+// medium
+// @font-face {
+// 	font-family: "Noto Sans Japanese";
+// 	font-style: normal;
+// 	font-weight: $notoMedium;
+// 	@include webFontSrc($notoSansMedium);
+// }
+
+// bold
+// @font-face {
+// 	font-family: "Noto Sans Japanese";
+// 	font-style: normal;
+// 	font-weight: $notoBold;
+// 	@include webFontSrc($notoSansBold);
+// }
+
+
+// open Sans
+$openSansPath 	: $fontPath + "Open-Sans/";
+$openSansBold 	: $openSansPath + "OpenSans-Bold";
+$openSansBoldItalic 	: $openSansPath + "OpenSans-BoldItalic";
+
+@font-face {
+	font-family: "Open-Sans";
+	font-style: normal;
+	font-weight: bold;
+	@include webFontSrc($openSansBold);
+}
+
+@font-face {
+	font-family: "Open-Sans";
+	font-style: italic;
+	font-weight: bold;
+	@include webFontSrc($openSansBoldItalic);
+}
+
+
+
+
+
+
+
+
+
+

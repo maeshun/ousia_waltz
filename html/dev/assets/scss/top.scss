@@ -1,0 +1,330 @@
+@charset "utf-8";
+
+@import "compass";
+@import "setting";
+@import "mixin";
+@import "parts";
+
+.main {
+  // .inner-main {
+  //   position: relative;
+  // }
+  .main_carousel {
+    width: 100%;
+    height: 200px;
+    background-color: #000;
+    overflow: hidden;
+    z-index: 5;
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      background-color: rgba(#000, 0.5);
+    }
+    @include pc {
+      width: 100%;
+      height: 100%;
+      &:after {
+        height: 100%;
+      }
+    }
+  }
+  .carousel_wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  .slick-list {
+    height: 100%;
+  }
+  .slick-track {
+    height: 100%;
+  }
+  .carousel_list {
+    height: 100%;
+    // transform: translate(20px, 0);
+    // @include commonTransition(all);
+    &.slick-current {
+      .carousel_image {
+        // left: 0;
+        // animation: carouselSlideIn 0.5s linear;
+      }
+    }
+    @keyframes carouselSlideIn {
+      0% { left: -10px;}
+      100% { left: 0;}
+    }
+
+  }
+  .carousel_image {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    // transition: left 0.5s linear;
+  }
+  .main_concept {
+
+    @include pc {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+  }
+  .cassette {
+    display: none;
+    @include pc {
+      display: block;
+      width: 680px;
+      height: 200px;
+      position: relative;
+      // background: url(../img/top/tape.svg) center center no-repeat;
+      background-size: 680px;
+    }
+  }
+  .cassette_wrap {
+    height: 100%;
+    position: relative;
+  }
+  .cassette_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border: solid 3px #fff;
+    color: #fff;
+    border-radius: 50%;
+    // background-color: rgba(#000, 0.9);
+    position: absolute;
+    top: 0;
+    &:after {
+      position: relative;
+      // left: 0;
+      // right: 0;
+      // top: 0;
+      // bottom: 0;
+      display: inline-block;
+      // margin: 0;
+      @include fontsize(12);
+      letter-spacing: 0.15em;
+      color: #fff;
+    }
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg)}
+    100% { transform: rotate(-360deg)}
+  }
+
+  .cassette_btn-back {
+    left: 0;
+    &:after {
+      content: "STOP";
+      transition: color 0.2s linear;
+    }
+    // &:hover .cassette_btnText {
+    //   animation-play-state: paused;
+    // }
+    &:hover:after {
+      color: #aaa;
+    }
+  }
+  .cassette_btn-next {
+    right: 0;
+    &:after {
+      content: "PLAY";
+      transition: color 0.2s linear;
+    }
+    // &:hover .cassette_btnText {
+    //   animation-play-state: paused;
+    // }
+    &:hover:after {
+      color: #aaa;
+    }
+  }
+  .cassette_btnText {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    // border: solid 3px #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    background: url(../img/top/btn_tape.svg) center center no-repeat;
+    background-size: 150px 150px;
+    animation: spin 4s linear infinite;
+    &.state-stop {
+      animation-play-state: paused;
+    }
+  }
+  .cassette_center {
+    height: 100%;
+    background: url(../img/top/tape_center.svg) center center no-repeat;
+    background-size: 150px 35px;
+  }
+  .cassette_centerTitle {
+    padding-top: 50px;
+    @include fontsize(13);
+    letter-spacing: 0.15em;
+    text-align: center;
+    color: #fff;
+  }
+  .cassette_centerUrl {
+    margin-top: 75px;
+    @include fontsize(11);
+    letter-spacing: 0.15em;
+    text-align: center;
+    color: #fff;
+  }
+  .concept {
+    margin-top: 20px;
+    padding: 0 20px;
+    @include fontsize(10);
+    letter-spacing: 0.15em;
+    line-height: 2;
+    text-align: justify;
+    @include pc {
+      padding: 0 0 30px 0;
+      position: relative;
+      width: 650px;
+      line-height: 2.5;
+      @include fontsize(11);
+      color: #fff;
+    }
+  }
+  .inner-main {
+    padding: 0;
+  }
+
+
+
+  .section-mainVisual {
+    @include sp {
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .section-news,
+  .section-map {
+    // padding: 60px 0 0;
+    // height: calc(100% - 50px);
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    @include pc {
+      padding: 110px 60px 0;
+      height: calc(100% - 110px);
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+  // .section-news {
+  //   @include sp {
+  //     height: 100%;
+  //   }
+  // }
+
+  .inner-news {
+    @include pc {
+      padding: 0;
+    }
+  }
+  .newsList {
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    margin-bottom: 25px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include pc {
+      line-height: 2;
+    }
+  }
+  .news_text {
+    @include fontsize(12);
+    margin-bottom: 10px;
+  }
+  .news_date {
+    @include fontsize(11);
+    @include pc {
+      @include fontsize(10);
+    }
+  }
+
+  .sectionFooter_sp {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    @include pc {
+      display: none;
+    }
+  }
+
+
+  .inner-map {
+    padding: 0;
+  }
+  #gMap {
+    width: 100%;
+    height: 320px;
+    @include pc {
+      // height: 420px;
+    }
+    @include minScreen(1280) {
+      height: 450px;
+    }
+  }
+  .map_address {
+    margin-top: 20px;
+    @include fontsize(11);
+    text-align: center;
+    letter-spacing: 0.15em;
+    @include pc {
+      @include fontsize(12);
+      text-align: left;
+    }
+  }
+
+}
+
+// .startAnimation & {
+//   animation-name: animationTrapeziumRight;
+//   animation-duration: 3s;
+//   animation-timing-function: ease;
+//   animation-iteration-count: 1;
+// }
+// @keyframes animationTrapeziumLeft {
+//   0% {
+//     transform: rotate(60deg);
+//   }
+//   70% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(10deg);
+//   }
+// }

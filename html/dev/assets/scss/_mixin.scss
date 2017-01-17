@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+@import "setting";
+
+@mixin fontsize($size: 10, $base: 10) {
+	font-size: $size + px;
+	font-size: ($size / $base) * 1rem;
+}
+@mixin sp {
+	@media only screen and (max-width: 767px) {
+		@content;
+	}
+}
+@mixin pc {
+	@media only screen and (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin minScreen($minWidth) {
+  @media only screen and (min-width: $minWidth+"px") {
+    @content;
+  }
+}
+
+
+@mixin transition ($duration, $easing) {
+	-webkit-transition: $duration $easing;
+	-moz-transition: $duration $easing;
+	-ms-transition: $duration $easing;
+	-o-transition: $duration $easing;
+	transition: $duration $easing;
+}
+
+@mixin centerAbsolute() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@mixin commonTransition($property) {
+		transition: $property 0.2s linear;
+}
+@mixin commonHoverImg {
+	img {
+		@include commonTransition(opacity);
+	}
+	&:hover {
+		img {
+			opacity: $hoverOpacity;
+		}
+	}
+}
+@mixin commonHoverText {
+	@include commonTransition(color);
+	&:hover {
+		color: $hoverColor;
+	}
+}
+@mixin commonHoverOpacityAll {
+	transition: opacity 0.2s linear;
+	&:hover {
+		opacity: 0.5;
+		text-decoration: none;
+	}
+}
+@mixin hoverTextBorder {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: transparent;
+  @include commonTransition(all);
+}
