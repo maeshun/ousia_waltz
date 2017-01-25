@@ -194,7 +194,7 @@
   }
   .cassette_centerUrl {
     margin-top: 75px;
-    @include fontsize(11);
+    @include fontsize(10);
     letter-spacing: 0.15em;
     text-align: center;
     color: #fff;
@@ -211,7 +211,8 @@
       position: relative;
       width: 650px;
       line-height: 2.5;
-      @include fontsize(11);
+      @include fontsize(10);
+      letter-spacing: 0.13em;
       color: #fff;
     }
   }
@@ -277,7 +278,7 @@
   }
 
   .sectionFooter_sp {
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 20px;
     @include pc {
       display: none;

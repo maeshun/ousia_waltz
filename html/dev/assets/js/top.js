@@ -26,12 +26,9 @@
         me.setHeight();
       });
 
-      // me.nextSlide();
-      // me.prevSlide();
       me.playCarousel();
       me.stopCarousel();
 
-      me.beforeChange();
     },
     setHeight: function() {
       if (!isPC()) {
@@ -39,13 +36,9 @@
         return;
       }
       $(".main_carousel, carousel_image").height(gb.winHeight);
-      // if (!$("body").hasClass("edge")) {
-      //   $("#concept").css("margin-top", gb.winHeight);
-      // }
     },
     settingCarousel: function() {
       var me = this;
-      console.log("settingCarousel");
       me.$carousel.slick({
         autoplay: true,
         arrows: false,
@@ -56,8 +49,8 @@
         speed: 1000,
         fade: true,
         cssEase: 'ease',
+        swipeToSlide: true,
         useTransform: true
-      // }).slick('slickPause');
       }).slick('slickPlay');
     },
     nextSlide: function() {
@@ -81,32 +74,20 @@
     },
     stopCarousel: function() {
       var me = this;
-        console.log("stop");
       $(".cassette_btn-back").on("click", function(){
-        console.log("stop");
         me.$carousel.slick('slickPause');
         $(".cassette_btnText").addClass("state-stop");
       })
-
     },
     beforeChange: function() {
       var me = this;
-      // var me = this;
-      // me.$carousel.slick('slickPlay')
 
       me.$carousel.on("beforeChange", function(event, slick, currentSlide, nextSlide){
         $(".carousel_image").eq(nextSlide).css('left', '-25px');
-        // console.log(currentSlide);
-        // console.log($(".carousel_image").eq(currentSlide));
         $(".carousel_image").eq(nextSlide).animate({
           'left':'0'
         }, 500);
       });
-      // me.$carousel.on("afterChange", function(event, slick, currentSlide, nextSlide){
-
-      // }
-
-
     }
   }
 
@@ -134,7 +115,7 @@
     },
     setMarker: function(latLng, map) {
       var markerImg = {
-        url: '/assets/img/top/pin.png'
+        url: '/assets/img/top/pin.png',
       };
       var marker = new google.maps.Marker({
         position: latLng,
